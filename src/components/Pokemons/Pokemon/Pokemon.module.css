@@ -5,10 +5,17 @@
     color:white;
     text-transform: capitalize;
     border-radius: 25px;
+    transition: transform 0.3s ease-out;
+    
 }
 
 .Pokemon:hover{
-    background-color: grey;
+    background-color: rgb(112, 81, 81);
+    transform: scale(1.2);
+}
+.Pokemon:onclick{
+    background-color: rgb(221, 196, 85);
+    transform: scale(1.2);
 }
 
 

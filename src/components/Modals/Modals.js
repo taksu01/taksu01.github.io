@@ -1,13 +1,12 @@
 import React,  { useContext } from 'react';
 import styled from '@emotion/styled';
 import UserData from '../../context/user-data';
-
+import {  keyframes } from '@emotion/react'
 const Modals = ( props ) => {
     let contextUser = useContext(UserData);
     const ModalDiv = styled.div`
         position: fixed;
-        z-index: 500;
-        background-color: white;
+        background-color: #f25555;
         width: 70%;
         border: 1px solid #ccc;
         box-shadow: 1px 1px 1px black;
@@ -16,6 +15,59 @@ const Modals = ( props ) => {
         top: 30%;
         box-sizing: border-box;
         transition: all 0.3s ease-out;
+    `
+    const bounce = keyframes`
+    from, 20%, 53%, 80%, to {
+        transform: translate3d(0,0,0);
+      }
+    
+      40%, 43% {
+        transform: translate3d(0, -30px, 0);
+      }
+    
+      70% {
+        transform: translate3d(0, -15px, 0);
+      }
+    
+      90% {
+        transform: translate3d(0,-4px,0);
+      }`
+
+    const catchPoke = keyframes`
+    from, 20%, 53%, 80%, to {
+        transform: scale(1);
+      }
+      90% {
+        transform: scale(2);
+      }
+
+    `
+    const PCatch = styled.button`
+        display:block;
+        margin:auto;
+        width:100px;
+        height:90px;
+        margin-top:10px;
+        margin-bottom:10px;
+        color:white;
+        background-color:white;
+        :hover{
+            animation: ${bounce} 1s linear infinite;
+        }
+        :click{
+            animation: ${catchPoke};
+        }
+        
+    `
+    const PClosed = styled.button`
+        display:block;
+        margin:auto;
+        width:100px;
+        margin-top:10px;
+        margin-bottom:10px;
+        color:black;
+        background-color:white;
+        
     `
     // const catchPokemonCancelHandler = () => {
     //     setCatchPokemon(false)
@@ -74,9 +126,11 @@ const Modals = ( props ) => {
                 opacity: props.show ? '1' : '0',
                 zIndex: props.show ? '10' : '-10'
             }}>
-            <p>Catch this Pokemon!</p>
-            <button onClick={throwPokeBallHandler}>CATCH 50%</button>
-            <button onClick={props.catchPokemonCancelHandler}>Closed</button>
+            <h1 style={{color:'white'}}>Catch this Pokemon!</h1>
+            <PCatch onClick={throwPokeBallHandler}>
+                <img src={'https://upload.wikimedia.org/wikipedia/commons/5/53/Pok%C3%A9_Ball_icon.svg'}/></PCatch>
+            <br></br>
+            <PClosed onClick={props.catchPokemonCancelHandler}>Closed</PClosed>
         </ModalDiv>
     </>
     )

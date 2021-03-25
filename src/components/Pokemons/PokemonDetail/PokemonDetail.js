@@ -1,4 +1,4 @@
-import React, {useEffect, Fragment, useState, useContext} from 'react';
+import React, {useState, useContext} from 'react';
 import classes from './PokemonDetail.module.css';
 import styled from '@emotion/styled';
 import Modals from '../../Modals/Modals';
@@ -44,44 +44,20 @@ const PokemonDetail = React.memo((props)=>{
         margin-top:10px;
         margin-bottom:10px;
     `
-    // const insertPokemonToPokedex =(nickname, pokemonName)=>{
-    //         if (!contextUser.pokedex.hasOwnProperty(pokemonName)) {
-    //             contextUser.pokedex = {
-    //                 ...contextUser.pokedex,
-    //                 [`${pokemonName}`]:[{
-    //                     name: nickname
-    //                 }]
-    //             };
-    //         }
-    //         else{
-    //             contextUser.pokedex[`${pokemonName}`].push({
-    //                 name: nickname
-    //             });
-    //         }
-    //         localStorage.setItem('MyPokemons', JSON.stringify(contextUser.pokedex));
-    //         alert('Pokemon added to Pokedex!');
-    //         catchPokemonCancelHandler();
-    //     }
-    //     const captureHandler = () =>{
-    //         let pokemonName = prompt('You succeed on capturing the Pokemon! Give it a name');
-    //         if(pokemonName === "" || pokemonName === null ){
-    //             alert('You need to give your pokemon a name!');
-    //             captureHandler();
-    //             return false;
-    //         }
-    //         pokemonName= pokemonName.normalize().toLowerCase().trim()
-            
-    //         for(const [key, value] of Object.entries(contextUser.pokedex)){
-    //             for(const pokName of value){
-    //                 if(pokemonName === pokName.name.normalize().toLowerCase()){
-    //                     alert('Pokemon with this name already exist');
-    //                     captureHandler();
-    //                     return false;
-    //                 }
-    //             }
-    //         }
-    //         insertPokemonToPokedex(pokemonName,props.name.toLowerCase())
-    //     }
+    const PCBack = styled.button`
+        width:100%;
+        height:60px;
+        font-size:20px;
+        background-color: white;
+        color:black;
+        border-radius: 35px;
+        transition:transform 1s ease-out;
+        :hover{
+            transform: scale(1.1);
+            background-color:#78C850;
+        }
+    } 
+    `
     const dispTypes = props.data.types.map((type, i)=>{
         return(
             <PDetailTypes className={type.type.name} key={`type_${i}`} >
@@ -96,14 +72,7 @@ const PokemonDetail = React.memo((props)=>{
             </PDetailMoves>
         )
     })
-    // const throwPokeBallHandler = () => {
-    //     if(Math.random() < 0.5){
-    //         captureHandler();
-    //     }
-    //     else{
-    //         alert('Oh no you did not catch it, dont give up!');
-    //     }
-    // }
+
     const catchPokemonCancelHandler = () => {
         setCatchPokemon(false)
     }
@@ -112,8 +81,11 @@ const PokemonDetail = React.memo((props)=>{
     }
     return(
         <PContainer>
+            
             <Modals show={catchPokemon} catchPokemonCancelHandler={catchPokemonCancelHandler} name={props.data.name}/>
+            
             <div className={props.data.types[0].type.name}>
+                
                 <img style={{
                     width: '50%',
                     height: '50%'
@@ -121,10 +93,12 @@ const PokemonDetail = React.memo((props)=>{
                 <h2 className={classes.Name}>{props.data.name}</h2>
             </div>
             <div>
+                
                 <PCatch onClick={()=>catchPokemonHandler(props.data.name)}>
                     <img src={'https://upload.wikimedia.org/wikipedia/commons/5/53/Pok%C3%A9_Ball_icon.svg'}/>
          
                 </PCatch>
+                <PCBack onClick={props.back}>Back</PCBack>
                 {dispTypes}
                 
                 <h3>Moves</h3>
@@ -134,7 +108,7 @@ const PokemonDetail = React.memo((props)=>{
             </div>
             <div>
                 
-                <button onClick={props.back} style={{backgroundColor:'#d2f7f5', width:'100px'}}>Back</button>
+               
             </div>
             
            

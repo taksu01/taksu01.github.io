@@ -1,9 +1,9 @@
 import classes from './NavItem.module.css';
-import {Link, NavLink} from 'react-router-dom'
+import {NavLink} from 'react-router-dom'
 
 const NavItem = ( props ) => (
     <li className={classes.NavItem}>
-        <NavLink to={props.link} className={props.active ? classes.active : null}>
+        <NavLink to={props.link} className={classes.NavItem} style={{textDecoration: 'none', fontSize:'20px'}}>
             {props.children}
         </NavLink>
  

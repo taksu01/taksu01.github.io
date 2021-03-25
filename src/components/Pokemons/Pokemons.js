@@ -1,10 +1,8 @@
 import styled from '@emotion/styled';
-import React, {useState, useEffect, useContext, useRef} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import Pokemon from './Pokemon/Pokemon';
 import PokemonDetail from './PokemonDetail/PokemonDetail';
 import axios from 'axios';
-import Modals from '../Modals/Modals';
-// import UserData from '../../context/user-data';
 
 const Pokemons = props =>{
     const [pokemons, setPokemon] = useState({
@@ -22,8 +20,6 @@ const Pokemons = props =>{
         forms: 'Please wait',
         moves: 'Please wait'
     });
-    // const [catchPokemon, setCatchPokemon] = useState(false);
-    // let contextUser = useContext(UserData);
     const RenderView =  useRef(null);
     const RenderDetail = useRef(null);
 
@@ -78,7 +74,6 @@ const Pokemons = props =>{
                 forms: data.forms,
                 moves: data.moves
             });
-            //RenderDetail.current =(<PokemonDetail url={pokemons.detailUrl} capture={catchPokemonHandler} data={pokemonDetail} back={backButtonHandler} name={pokemonDetail.name}/>);
             setPokemon({    
                 ...pokemons,
                 isViewingDetail:true,
@@ -96,62 +91,6 @@ const Pokemons = props =>{
         });
         setPokemonDetail({});
     }
-    // useEffect(()=>{
-    //     RenderDetail.current =(<PokemonDetail url={pokemons.detailUrl} capture={catchPokemonHandler} data={pokemonDetail} back={backButtonHandler} name={pokemonDetail.name}/>);
-    // },[]);
-    // const insertPokemonToPokedex =(nickname, pokemonName)=>{
-    //     if (!contextUser.pokedex.hasOwnProperty(pokemonName)) {
-    //         contextUser.pokedex = {
-    //             ...contextUser.pokedex,
-    //             [`${pokemonName}`]:[{
-    //                 name: nickname
-    //             }]
-    //         };
-    //     }
-    //     else{
-    //         contextUser.pokedex[`${pokemonName}`].push({
-    //             name: nickname
-    //         });
-    //     }
-    //     localStorage.setItem('MyPokemons', JSON.stringify(contextUser.pokedex));
-    //     alert('Pokemon added to Pokedex!');
-    //     catchPokemonCancelHandler();
-    // }
-    // const captureHandler = () =>{
-    //     let pokemonName = prompt('You succeed on capturing the Pokemon! Give it a name');
-    //     if(pokemonName === "" || pokemonName === null ){
-    //         alert('You need to give your pokemon a name!');
-    //         captureHandler();
-    //         return false;
-    //     }
-    //     pokemonName= pokemonName.normalize().toLowerCase().trim()
-        
-    //     for(const [key, value] of Object.entries(contextUser.pokedex)){
-    //         for(const pokName of value){
-    //             if(pokemonName === pokName.name.normalize().toLowerCase()){
-    //                 alert('Pokemon with this name already exist');
-    //                 captureHandler();
-    //                 return false;
-    //             }
-    //         }
-    //     }
-    //     insertPokemonToPokedex(pokemonName,pokemonDetail.name.toLowerCase())
-    // }
-    // const throwPokeBallHandler = () => {
-    //     if(Math.random() < 0.5){
-    //         captureHandler();
-    //     }
-    //     else{
-    //         alert('Oh no you did not catch it, dont give up!');
-    //     }
-    // }
-    
-    // const catchPokemonCancelHandler = () => {
-    //     setCatchPokemon(false)
-    // }
-    // const catchPokemonHandler = (x)=>{
-    //     setCatchPokemon(true)
-    // }
     const fetchNewListHandler = (url) =>{
         axios.get(url)
         .then(response =>{

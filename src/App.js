@@ -15,10 +15,6 @@ const App =()=> {
   else{
     _MyPokemons = JSON.parse(localStorage.getItem('MyPokemons'));
   }
-  const routes = {
-    "/": () => <Pokemons  />,
-    "/MyPokemons": () => <MyPokemons />,
-  };
   return (
   <Fragment>
       <Layout>

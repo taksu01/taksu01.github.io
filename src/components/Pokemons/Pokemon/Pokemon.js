@@ -1,7 +1,11 @@
 import axios from 'axios';
-import { Fragment, useEffect, useState } from 'react';
+import { Fragment, useEffect, useState, useContext } from 'react';
 import classes from './Pokemon.module.css';
+import UserData from '../../../context/user-data';
+
 const Pokemon = (props)=>{
+    let ownedPokemon = 0;
+    const contextUser = useContext(UserData);
     const [pokemon, setPokemon]=useState({})
     useEffect(()=>{
         let isMounted = true;
@@ -20,7 +24,11 @@ const Pokemon = (props)=>{
         })
         return () => { isMounted = false };
     },[]);
-
+    if(pokemon.dataFetch){
+        if(contextUser.pokedex.hasOwnProperty(pokemon.name)){
+            ownedPokemon = contextUser.pokedex[`${pokemon.name}`].length
+        }
+    }
     return(
         <Fragment>
             {pokemon.dataFetch ?
@@ -28,6 +36,7 @@ const Pokemon = (props)=>{
                 <h2>{pokemon.name}</h2>
                 <img style={{width:'100px', height:'100px', marginTop:'10px'}} rel="preload" src={pokemon.image} alt=""/>     
                 <p> {pokemon.type}</p>  
+                <p> Owned: {ownedPokemon}</p>  
             </div>: null
             }
         </Fragment>

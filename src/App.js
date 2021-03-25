@@ -24,7 +24,7 @@ const App =()=> {
       <Layout>
         <UserData.Provider value={{hasData:true,pokedex:_MyPokemons}}>
           <Switch>
-            <Route exact path='/' render={props => <Pokemons {...props} />} />
+            <Route exact path='/' component={Pokemons} />
             <Route path='/MyPokemons' render={props => <MyPokemons {...props} />} />
           </Switch>
         </UserData.Provider>

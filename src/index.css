@@ -1,13 +1,67 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  font-family: "Open Sans", sans-serif;
+  background-color: #E5E5F7;
+  opacity: 1;
+  background-image: linear-gradient( 45deg, #f25555, #f06464 30%, white 10px, white 70% );
+  height: 100%;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.normal{
+  background: #807870;
+}
+.grass{
+  background: #78C850;
+}
+.fire{
+  background: #F08030;
+}
+.water{
+  background: #6890F0;
+}
+.bug{
+  background: #A8B820;
+}
+.electric{
+  background: #F8D030;
+}
+.ice{
+  background: #98D8D8;
+}
+.fighting{
+  background: #C03028;
+}
+.poison{
+  background: #A040A0;
+}
+.ground{
+  background: #E0C068;
+}
+.flying{
+  background: #A890F0;
+}
+.psychic{
+  background: #F85888;
+}
+.rock{
+  background: #B8A038;
+}
+.ghost{
+  background: #705898;
+}
+.dark{
+  background: #705848;
+}
+.dragon{
+  background: #7038F8;
+}
+.steel{
+  background: #B8B8D0;
+}
+.fairy{
+  background: #F0B6BC;
 }

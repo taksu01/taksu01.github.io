@@ -1,0 +1,11 @@
+.ToolsBar-header{
+    height: 60px;
+    width: 100%;
+    position: fixed;
+    display: flex;
+    top: 0;
+    left: 0;
+    justify-content: space-between;
+    box-sizing: border-box;
+    background:#f25555;
+}

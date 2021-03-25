@@ -1,0 +1,26 @@
+.SideBar{
+    position: fixed;
+    width: 280px;
+    max-width: 60%;
+    height:100%;
+    top: 0;
+    left: 0;
+    background-color: #cfc5c4;
+    box-sizing: border-box;
+    z-index: 1;
+    transition: transform 0.3s ease-out;
+}
+.Backdrop{
+    position: fixed;
+    background-color: black;
+    opacity: 50%;
+    transition: transform 0.3s ease-out;
+}
+
+.Open {
+    transform: translateX(0);
+}
+
+.Close {
+    transform: translateX(-100%);
+}

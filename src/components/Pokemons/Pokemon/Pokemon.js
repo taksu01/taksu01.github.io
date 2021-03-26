@@ -2,6 +2,7 @@ import axios from 'axios';
 import { Fragment, useEffect, useState, useContext } from 'react';
 import classes from './Pokemon.module.css';
 import UserData from '../../../context/user-data';
+import PropTypes from 'prop-types';
 
 const Pokemon = (props)=>{
     let ownedPokemon = 0;
@@ -42,5 +43,7 @@ const Pokemon = (props)=>{
         </Fragment>
     );
 }
-
+Pokemon.propTypes = {
+    url: PropTypes.string.isRequired
+}
 export default Pokemon;

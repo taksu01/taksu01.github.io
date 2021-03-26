@@ -4,6 +4,7 @@ import Pokemon from './Pokemon/Pokemon';
 import PokemonDetail from './PokemonDetail/PokemonDetail';
 import axios from 'axios';
 
+
 const Pokemons = props =>{
     const [pokemons, setPokemon] = useState({
         result: [],
@@ -130,24 +131,15 @@ const Pokemons = props =>{
     
     
     if(pokemons.isViewingDetail && pokemonDetail.types!== 'Please Wait'){
-        
-            
-        
         return(
             <>
-            {/* <Modals show={catchPokemon} modalClosed={catchPokemonCancelHandler}>
-                <p>Catch this Pokemon!</p>
-                <button onClick={throwPokeBallHandler}>CATCH 50%</button>
-                <button onClick={catchPokemonCancelHandler}>Closed</button>
-            </Modals> */}
             <PokemonList>
       
             <PokemonDetail url={pokemons.detailUrl}  data={pokemonDetail} back={backButtonHandler} name={pokemonDetail.name}/>
             
             </PokemonList>
             </>
-            )
-    
+            )  
     }
     return(
         <div>
@@ -155,5 +147,4 @@ const Pokemons = props =>{
         </div>
     )
 }
-
 export default Pokemons;

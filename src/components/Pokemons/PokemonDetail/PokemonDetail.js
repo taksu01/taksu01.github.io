@@ -2,11 +2,9 @@ import React, {useState, useContext} from 'react';
 import classes from './PokemonDetail.module.css';
 import styled from '@emotion/styled';
 import Modals from '../../Modals/Modals';
-import UserData from '../../../context/user-data';
-
+import PropTypes from 'prop-types';
 const PokemonDetail = React.memo((props)=>{
     const [catchPokemon, setCatchPokemon] = useState(false);
-    let contextUser = useContext(UserData);
     const PContainer = styled.div`
         text-align:center;
         margin:auto;
@@ -115,5 +113,20 @@ const PokemonDetail = React.memo((props)=>{
         </PContainer>
     )
 })
-
+PokemonDetail.propTypes = {
+    data:PropTypes.shape({
+        types: PropTypes.arrayOf(PropTypes.shape({
+            type:PropTypes.shape({
+                name: PropTypes.string.isRequired
+            })
+        })),
+        moves: PropTypes.arrayOf(PropTypes.shape({
+            move:PropTypes.shape({
+                name:PropTypes.string
+            })
+        })),
+        name: PropTypes.string.isRequired,
+        image:PropTypes.string
+    })
+}
 export default PokemonDetail;

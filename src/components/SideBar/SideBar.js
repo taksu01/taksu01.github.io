@@ -2,6 +2,7 @@ import styled from '@emotion/styled'
 import {useState, Fragment, useEffect} from 'react';
 import classes from './SideBar.module.css';
 import NavItems from './NavItems/NavItems';
+import PropTypes from 'prop-types'
 
 const SideBar = (props)=>{
     const [drawer, setDrawer] = useState([classes.SideBar, classes.Close]);
@@ -39,6 +40,10 @@ const SideBar = (props)=>{
             <Backdrop className={drawer[1]} onClick={props.click}/>
         </Fragment>
     )
+}
+
+SideBar.propType = {
+    open: PropTypes.bool
 }
 
 export default SideBar;

@@ -51,9 +51,8 @@ const Modals = ( props ) => {
         margin-bottom:10px;
         color:white;
         background-color:white;
-        :hover{
-            animation: ${bounce} 1s linear infinite;
-        }
+        animation: ${bounce} 1s linear infinite;
+
         :click{
             animation: ${catchPoke};
         }
